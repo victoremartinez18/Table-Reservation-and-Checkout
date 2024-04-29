@@ -1,5 +1,20 @@
-// This is part of my code. There are some components, SQL files and .NET/C# files that I am not sharing in this repo.
-// Feel free to reach out if you have any questions, I would love to discuss the code and implementation of this project.
+import React, { useState, useEffect } from "react";
+import "../Reservation/reservation.css";
+import debug from "sabio-debug";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useSearchParams } from "react-router-dom";
+import ReactDatePicker from "react-datepicker";
+import { toast } from "react-toastify";
+
+import productsService from "services/productsService";
+import ProductCard from "./ProductCard";
+import tableService from "services/tableService";
+import TableCard from "./TableCard";
+import CheckoutButton from "components/Checkout/CheckoutButton";
+import SummaryRow from "./SummaryRow";
+
+const _logger = debug.extend("reservationPage");
 
 function ReservationPage() {
   const [reservationData, setReservationData] = useState({
@@ -48,7 +63,8 @@ function ReservationPage() {
 
       for (let i = 0; selectedProdArray.length > i; i++) {
         prodTotal +=
-          reservationData.selectedProds[i].price * reservationData.selectedProds[i].quantity;
+          reservationData.selectedProds[i].price *
+          reservationData.selectedProds[i].quantity;
       }
     } else {
       prodTotal = 0;
@@ -221,7 +237,13 @@ function ReservationPage() {
   };
 
   const tableMapper = (tableObj) => {
-    return <TableCard key={tableObj.id} tableObj={tableObj} tableHandler={tableHandler} />;
+    return (
+      <TableCard
+        key={tableObj.id}
+        tableObj={tableObj}
+        tableHandler={tableHandler}
+      />
+    );
   };
 
   const tableMapperSummary = (tableObj) => {
@@ -257,7 +279,8 @@ function ReservationPage() {
         let payloadTotal = reservationData.totalToPay.toFixed(2);
         newState.Total = payloadTotal;
         newState.Name = "Table Reservation";
-        newState.Image = "https://img.freepik.com/free-photo/table-dinner-set_74190-1534.jpg";
+        newState.Image =
+          "https://img.freepik.com/free-photo/table-dinner-set_74190-1534.jpg";
         newState.tableId = reservationData.selectedTable[0].id;
 
         return newState;
@@ -266,8 +289,10 @@ function ReservationPage() {
       setReservationData((prevState) => {
         const newState = { ...prevState };
         newState.currentPage = "summary";
-        newState.summaryProdComponents = prevState.selectedProds.map(mapProdsSummary);
-        newState.summaryTableComponents = prevState.selectedTable.map(tableMapperSummary);
+        newState.summaryProdComponents =
+          prevState.selectedProds.map(mapProdsSummary);
+        newState.summaryTableComponents =
+          prevState.selectedTable.map(tableMapperSummary);
 
         return newState;
       });
@@ -340,14 +365,25 @@ function ReservationPage() {
           <div className="res-title-container">
             <div className="res-arrow-left">
               {reservationData.currentPage === "prods" ? (
-                <FontAwesomeIcon className="res-arrow-disabled" icon={faArrowLeft} />
+                <FontAwesomeIcon
+                  className="res-arrow-disabled"
+                  icon={faArrowLeft}
+                />
               ) : (
-                <FontAwesomeIcon className="res-arrow" icon={faArrowLeft} onClick={prevClicked} />
+                <FontAwesomeIcon
+                  className="res-arrow"
+                  icon={faArrowLeft}
+                  onClick={prevClicked}
+                />
               )}
             </div>
             <div className="res-title">
-              {reservationData.currentPage === "prods" && <h3> Select Products </h3>}
-              {reservationData.currentPage === "tables" && <h3> Select Table </h3>}
+              {reservationData.currentPage === "prods" && (
+                <h3> Select Products </h3>
+              )}
+              {reservationData.currentPage === "tables" && (
+                <h3> Select Table </h3>
+              )}
               {reservationData.currentPage === "date" && <h3> Select Date </h3>}
               {reservationData.currentPage === "summary" && <h3> Summary </h3>}
             </div>
@@ -365,14 +401,19 @@ function ReservationPage() {
                   onClick={nextClicked}
                 />
               ) : (
-                <FontAwesomeIcon className="res-arrow-disabled" icon={faArrowRight} />
+                <FontAwesomeIcon
+                  className="res-arrow-disabled"
+                  icon={faArrowRight}
+                />
               )}
             </div>
           </div>
           <div className="res-card-container">
             <div className="res-card-selector">
-              {reservationData.currentPage === "prods" && reservationData.prodComponents}
-              {reservationData.currentPage === "tables" && reservationData.tableComponents}
+              {reservationData.currentPage === "prods" &&
+                reservationData.prodComponents}
+              {reservationData.currentPage === "tables" &&
+                reservationData.tableComponents}
               {reservationData.currentPage === "date" && (
                 <div className="res-date-time">
                   <div>

@@ -1,5 +1,8 @@
 # Table-Reservation-and-Checkout
+
 Table reservation system for restaurants and venues with Credit Card payment integration.
+
+NOTE: These are just some of the files to showcase my work. Feel free to reach out if you have any questions.
 
 ## 🍽️ Table Reservation Web App
 
