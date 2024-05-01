@@ -14,6 +14,8 @@ This repository contains a full-stack solution for implementing a table reservat
 - **Backend**: .NET/C# API controllers and methods.
 - **Database**: SQL database tables and stored procedures, including user-defined tables.
 
+https://github.com/victoremartinez18/Table-Reservation-and-Checkout/assets/123347550/4142ff77-2a04-42a6-9333-f0bce11cda22
+
 ### ℹ️ How to Use
 
 The reservation process is divided into multiple stages: Select Products, Select Table, Select Date, Review Summary, and Checkout.
