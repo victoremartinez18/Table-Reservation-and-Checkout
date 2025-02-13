@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Reservation/reservation.css";
-import debug from "sabio-debug";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useSearchParams } from "react-router-dom";
@@ -13,8 +13,6 @@ import tableService from "services/tableService";
 import TableCard from "./TableCard";
 import CheckoutButton from "components/Checkout/CheckoutButton";
 import SummaryRow from "./SummaryRow";
-
-const _logger = debug.extend("reservationPage");
 
 function ReservationPage() {
   const [reservationData, setReservationData] = useState({
@@ -105,7 +103,7 @@ function ReservationPage() {
   };
 
   const onGetProductByVenueIdError = (Error) => {
-    _logger("Product Response", Error);
+    
     toast.error("Error loading content.", {
       position: "top-right",
     });
