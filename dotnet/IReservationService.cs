@@ -1,8 +1,4 @@
-﻿using Sabio.Models;
-using Sabio.Models.Domain.Reservations;
-using Sabio.Models.Requests.Reservations;
 
-namespace Sabio.Services.Interfaces
 {
     public interface IReservationService
     {
