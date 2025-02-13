@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import debug from "sabio-debug";
+
 import { toast } from "react-toastify";
 import reservationService from "services/reservationService";
 import "../Reservation/reservation.css";
 
 function CheckoutSuccess() {
   const navigate = useNavigate();
-  const _logger = debug.extend("CheckoutSuccess");
+
 
   const [payload] = useState({
     CouponCode: "",
