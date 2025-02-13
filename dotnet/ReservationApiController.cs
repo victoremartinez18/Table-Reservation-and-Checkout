@@ -1,21 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Sabio.Services.Interfaces;
-using Sabio.Services;
-using Sabio.Models.Domain.Tables;
-using Sabio.Models.Domain;
-using Sabio.Web.Models.Responses;
-using System;
-using Sabio.Models.Domain.Reservations;
-using Sabio.Web.Controllers;
-using Sabio.Models;
-using System.Data.SqlClient;
-using System.Data;
-using Sabio.Models.Requests.Reservations;
-using Sabio.Models.Requests.Tables;
 
-namespace Sabio.Web.Api.Controllers
 {
     [Route("api/reservation")]
     [ApiController]
