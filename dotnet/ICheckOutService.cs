@@ -1,6 +1,4 @@
-﻿using Sabio.Models.Requests;
 
-namespace Sabio.Services
 {
     public interface ICheckOutService
     {
