@@ -1,15 +1,4 @@
-﻿using Stripe.Checkout;
-using Stripe;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sabio.Services.Interfaces;
-using Stripe.Climate;
-using Sabio.Models.Requests;
 
-namespace Sabio.Services
 {
     public class CheckOutService : ICheckOutService
     {
