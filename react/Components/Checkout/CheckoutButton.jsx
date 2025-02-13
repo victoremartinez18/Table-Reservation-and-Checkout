@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import debug from "sabio-debug";
+
 import { loadStripe } from "@stripe/stripe-js";
 import checkoutService from "services/checkoutService";
 import { toast } from "react-toastify";
@@ -7,7 +7,7 @@ import "../Reservation/reservation.css";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 
-const _logger = debug.extend("CheckoutButton");
+
 
 const CheckoutButton = ({ payload }) => {
   const [sessionData, setSessionData] = useState({
@@ -28,7 +28,7 @@ const CheckoutButton = ({ payload }) => {
   }
 
   function onLoadError(error) {
-    _logger(error);
+    
 
     toast.error("Error loading Checout.", {
       position: "top-right",
